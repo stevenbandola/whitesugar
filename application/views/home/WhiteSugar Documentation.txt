@@ -1,0 +1,42 @@
+WhiteSugar Documentation - Phase 1
+
+Summary:
+WhiteSugar CMS is to be an interactive content management system with an easy to use UI. It will make it easy for developers and clients alike to manage content both on the clients front-side website, as well as the back end CMS. 
+
+In the first phase, we will build the basic roots of sugar. The first phase will consist of building an interface where developers can manage "modules" enabled on the CMS. The modules will be represented on the nav and be viewable by all users of the CMS but only changable by the root admins of the CMS (the developers). 
+
+There are three different navigation areas which will be defined as follows. The settings-nav (very top right, represented by "settings, configuration, logout" in whitelabel), the header-nav (the white buttons directly right of the whitelabel logo), and the nav (the main nav for the CMS on the left). The settings-nav is where we will include all root admin features such as module creation, permissions overrides, etc. Each module will have its own header-nav which will be updated every time the user navigates into the corresponding module. 
+
+Although this is the first phase, we need to plan for two more phases as well. The first solid version of WhiteSugar will consist of an air-tight system including modules, permissions, and users. All three of these features will be vital to producing a solid, secure product. We are starting on modules because it is the most root functionality of the CMS, but we will build it with permissions and users in mind. We will assume that only developers or CMS admins will have access to these features. 
+
+Modules:
+	Features to build:
+	-Create Module Type
+		The developer will create a representation for a module already existing the the project folder.
+		Each module will have a "keyword" which will correspond with the model name of the module in the code eg. "users, pages, gallery".
+		Required Parameters:
+		-Title
+		-Keyword
+		-Enabled/Disabled
+	-Delete Module Type
+		The developer can delete a module type
+	-Edit Module Type
+		The developer can update the module keyword, and enable/disable the module.
+		**Disabling the module at this point will not do anything. All that is important is that we store a value on the db that identifies the module as enabled/disabled. We will build out the security and permissions features in phase 2.
+
+Navigations:
+	-Create Nav Item
+		The developer will enter the name of the nav item and select the type (either nav , sub-nav or header-nav). If the developer chooses nav or sub-nav, they will be asked to either enter a link where the nav item will lead or select a module type, where the nav
+		Required Parameters:
+		-Title (What will appear as the title for this nav item)
+		-Type (Either header-nav, sub-nav, or nav)
+		**If sub-nav or header-nav, they must also select a nav item for it's parent which it will be nested under in the nav. See the documentation nav item in whitelabel.
+		-Link (A URL of a specific page or a module.)
+		**If the link is to a disabled module, the module will show a "page restricted" view.
+	-Delete Nav Item
+		The developer can delete the navigation item
+		**If the item has an sub-navs or header-navs with it as a parent, warn the user.
+	-Edit Nav Item
+		The developer can edit the title, type, and link of the nav item.
+	-Order Nav Items
+		This will be a separate view where the develoer will use a drag and drop ui to re-order the nav items to the order they want. Each nav item will have a value of "position" on the database. After each change made with the ui, an ajax request will be made to the server sending an array following this format [id : newPosition, id : newPosition].
