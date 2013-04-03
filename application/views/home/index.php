@@ -36,12 +36,6 @@
   <script src="js/underscore.js"></script>
   <script src="js/backbone.js"></script>
 
-  <!-- Backbone core file -->
-	<script src="src/application.js"></script>
-
-	<!-- Backbone module files -->
-  <script src="src/modules/modules.js"></script>
-
 	<!-- Loading JS Files this way is not recommended! Merge them but keep their order -->
 	
 	<!-- some basic functions -->
@@ -81,25 +75,32 @@
 		
 	<!-- the script which handles all the access to plugins etc... -->
 	<script src="js/script.js"></script>
+
+	<!-- clickify.js -->
+	<script src="https://raw.github.com/gist/3014727/clickify.js"></script>
 	
+	 <!-- Backbone core file -->
+	<script src="src/application.js"></script>
+
+	<!-- Backbone module files -->
+  <script src="src/modules/modules.js"></script>
 	
 </head>
 <body>
 				<div id="pageoptions">
 			<ul>
 				<li><a href="login.html">Logout</a></li>
-				<li><a href="#" id="wl_config">Configuration</a></li>
+				<li><a href="" id="wl_config" class="no-click">CMS Control Panel</a></li>
 				<li><a href="#">Settings</a></li>
 			</ul>
 			<div>
-						<h3>Place for some configs</h3>
-						<p>Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar custosi traductores.</p>
+						<h3 style='float: right;' ><a href='modules' style='color: white; ' >Modules</a> - <a href='#' style='color: white;' >Navigation</a> </h3>
 			</div>
 		</div>
 
 			<header>
 		<div id="logo">
-			<a href="#">whitesugar</a>
+			<a href="http://whitesugar.dev">whitesugar</a>
 		</div>
 		<div id="header">
 			<ul id="headernav">
@@ -138,7 +139,7 @@
 
 				<nav>
 			<ul id="nav">
-				<li class="i_house"><a href="#"><span>Dashboard</span></a></li>
+				<li class="i_house"><a href="dashboard"><span>Dashboard</span></a></li>
 				<li class="i_book"><a><span>Documentation</span></a>
 					<ul>
 						<li><a href="#"><span>Alert Boxes</span></a></li>
@@ -172,13 +173,40 @@
 		</nav>
 		
 		<section id="content">
+
+
 		
-		<div class="g12 nodrop">
-			<h1>Dashboard</h1>
-			<p>This is a quick overview of some features</p>
-		</div>	
+		<script type="text/template" id='modulesTemplate' >
 			
-			</section>
+			<div class="g12 nodrop">
+				<h1>Modules</h1>
+				<p>This is a list of available modules</p>
+
+				<table class="datatable">
+						<thead>
+							<tr>
+								<th>Title</th>
+								<th>Keyword</th>
+								<th>Active</th>
+							</tr>
+						</thead>
+						<tbody id='modulesTable' >
+						</tbody>
+					</table>
+			</div>	
+
+		</script>
+
+		<script type="text/template" id='moduleTemplate' >
+
+				<td class='moduleTitle'><a href='module/<%= id %>'> <%= title %></a></td>
+				<td class='moduleKeyword' ><%= keyword %></td>
+				<td class='moduleActive' ><%= active %></td>
+
+		</script>
+		
+			
+		</section>
 		<footer>Copyright by Esembitech.com 2013</footer>
 </body>
 </html>

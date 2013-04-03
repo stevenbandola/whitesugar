@@ -74,10 +74,6 @@ $(document).ready(function() {
 		/* datatable plugin
 		/*----------------------------------------------------------------------*/
 		
-		$content.find("table.datatable").dataTable({
-			"sPaginationType": "full_numbers"
-		});
-		
 		/*----------------------------------------------------------------------*/
 		/* uniform plugin && checkbox plugin (since 1.3.2)
 		/* uniform plugin causes some issues on checkboxes and radios
@@ -190,11 +186,11 @@ $(document).ready(function() {
 		//Top Pageoptions
 		$('#wl_config').click(function(){
 			var $pageoptions = $('#pageoptions');
-			if($pageoptions.height() < 200){
-				$pageoptions.animate({'height':200});
+			if($pageoptions.height() < 70){
+				$pageoptions.animate({'height':70});
 				$(this).addClass('active');
 			}else{
-				$pageoptions.animate({'height':20});
+				$pageoptions.animate({'height':5});
 				$(this).removeClass('active');
 			}
 			return false;
@@ -224,7 +220,7 @@ $(document).ready(function() {
 		var $searchform = $('#searchform'),
 			$searchfield = $('#search'),
 			livesearch = true;
-		
+
 		$searchfield
 			.bind({
 				'focus.wl': function(){
