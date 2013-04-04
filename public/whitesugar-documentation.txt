@@ -1,4 +1,14 @@
-WhiteSugar Documentation - Phase 1
+WhiteSugar Documentation
+
+ - Application setup
+
+ WhiteSugar CMS will be a single page app using backbone on the frontend and laravel on the backend. The page will be loaded once and the user will navigate around the entire CMS without having to refresh, creating a very user friendly experience. Every module will have security which checks whether the user has access to that module. 
+
+ **Once a page is loaded, all the links will be handled with backbone. The website will not refresh when a link is clicked. However, views must be served from laravel if a page is refreshed. For example, I may navigate to /modules with backbone routers, but when the page is refreshed /modules still needs to serve up the same view as backbone did. 
+
+ The api will be pronounced by /data. So if I want to get all pages, I will send a GET request to /data/pages and expect to receive all rows for pages in JSON. Similarily, if I send a GET request to /data/pages/23, I would expect to receive data in JSON for only the page with an ID of 23.
+
+ - Phase 1 Modules an Nav
 
 Summary:
 WhiteSugar CMS is to be an interactive content management system with an easy to use UI. It will make it easy for developers and clients alike to manage content both on the clients front-side website, as well as the back end CMS. 
@@ -12,7 +22,7 @@ Although this is the first phase, we need to plan for two more phases as well. T
 Modules:
 	Features to build:
 	-Create Module Type
-		The developer will create a representation for a module already existing the the project folder.
+		The developer will create a representation for a module already existing in the project folder.
 		Each module will have a "keyword" which will correspond with the model name of the module in the code eg. "users, pages, gallery".
 		Required Parameters:
 		-Title
@@ -40,3 +50,6 @@ Navigations:
 		The developer can edit the title, type, and link of the nav item.
 	-Order Nav Items
 		This will be a separate view where the develoer will use a drag and drop ui to re-order the nav items to the order they want. Each nav item will have a value of "position" on the database. After each change made with the ui, an ajax request will be made to the server sending an array following this format [id : newPosition, id : newPosition].
+
+
+	Phase 2 - Users and Permissions
